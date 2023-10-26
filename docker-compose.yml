@@ -11,7 +11,7 @@ services:
     ports:
       - 8080:80
     volumes:
-      - ./web:/app/web
+      - ./public:/app/public
     networks:
       - app-network
     depends_on:

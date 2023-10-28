@@ -12,4 +12,13 @@ final class Puntos extends Collection
     {
         return Punto::class;
     }
+    public function cantidadTotal(): int
+    {
+        return $this->sumarCantidadPuntos(...$this->items());
+    }
+
+    public function sumarCantidadPuntos(Punto ...$puntos): int
+    {
+        return array_sum(array_map(fn(Punto $punto) => $punto->cantidad(), $puntos));
+    }
 }

@@ -8,3 +8,8 @@ app_acumulador_punto:
     path: /acumulador-punto
     controller: App\Punto\Infrastructure\Api\AcumuladorPuntoController::acumuladorDePuntos
     methods: [POST]
+
+app_canjeador_punto:
+    path: /canjeador-punto
+    controller: App\Punto\Infrastructure\Api\CanjeadorPuntoController::canjeadorDePuntos
+    methods: [POST]

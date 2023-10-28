@@ -10,3 +10,5 @@
 ###< symfony/framework-bundle ###
 
 /.idea
+.idea/Farma.iml
+.idea/php.xml

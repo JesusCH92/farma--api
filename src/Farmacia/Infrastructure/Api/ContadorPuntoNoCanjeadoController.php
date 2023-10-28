@@ -31,4 +31,19 @@ final class ContadorPuntoNoCanjeadoController extends SymfonyApiController
 
         return $this->response(['cantidad_puntos_acumulados' => $response->cantidadTotal()]);
     }
+
+    #[Route('/client-puntos-sin-canjear', name: 'app_contador_punto_no_canjeado_por_cliente', methods: 'GET')]
+    public function contadorDePuntosNoCanjeadosEnFarmaciaPorCliente(Request $request): Response
+    {
+        $response = ($this->contadorPuntoNoCanjeado)(
+            new ContadorPuntoNoCanjeadoRequest(
+                $request->query->getInt('farmacia_id'),
+                $this->convertDateOrFail($request->query->get('fecha_inicio')),
+                $this->convertDateOrFail($request->query->get('fecha_fin')),
+                $request->query->getInt('cliente_id')
+            )
+        );
+
+        return $this->response(['cantidad_puntos_acumulados' => $response->cantidadTotal()]);
+    }
 }

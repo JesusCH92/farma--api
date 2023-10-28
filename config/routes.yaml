@@ -20,3 +20,8 @@ app_contador_punto_no_canjeado:
     path: /puntos-sin-canjear
     controller: App\Farmacia\Infrastructure\Api\ContadorPuntoNoCanjeadoController::contadorDePuntosNoCanjeadosEnFarmacia
     methods: [GET]
+
+app_contador_punto_no_canjeado_por_cliente:
+    path: /client-puntos-sin-canjear
+    controller: App\Farmacia\Infrastructure\Api\ContadorPuntoNoCanjeadoController::contadorDePuntosNoCanjeadosEnFarmaciaPorCliente
+    methods: [GET]

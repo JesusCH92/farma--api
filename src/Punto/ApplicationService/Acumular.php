@@ -5,13 +5,14 @@ declare(strict_types=1);
 namespace App\Punto\ApplicationService;
 
 use App\Cliente\Domain\Entity\Cliente;
+use App\Cliente\Domain\Exception\NotFoundCliente;
 use App\Cliente\Domain\Repository\ClienteRepository;
 use App\Farmacia\Domain\Entity\Farmacia;
+use App\Farmacia\Domain\Exception\NotFoundFarmacia;
 use App\Farmacia\Domain\Repository\FarmaciaRepository;
 use App\Punto\ApplicationService\DTO\AcumularRequest;
 use App\Punto\Domain\Entity\Punto;
 use App\Punto\Domain\Repository\PuntoRepository;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 final class Acumular
 {
@@ -37,7 +38,7 @@ final class Acumular
         $farmacia = $this->farmaciaRepository->findById($farmaciaId);
 
         if (null === $farmacia) {
-            throw new NotFoundHttpException(sprintf('La farmacia con id: %s, no existe', $farmaciaId));
+            throw new NotFoundFarmacia(sprintf('La farmacia con id: %s, no existe', $farmaciaId));
         }
 
         return $farmacia;
@@ -48,7 +49,7 @@ final class Acumular
         $cliente = $this->clienteRepository->findById($clienteId);
 
         if (null === $cliente) {
-            throw new NotFoundHttpException(sprintf('El cliente con id: %s, no existe', $clienteId));
+            throw new NotFoundCliente(sprintf('El cliente con id: %s, no existe', $clienteId));
         }
 
         return $cliente;

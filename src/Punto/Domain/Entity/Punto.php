@@ -19,7 +19,7 @@ class Punto
     #[ORM\JoinColumn(name: 'cliente_id', nullable: false)]
     private Cliente $cliente;
     #[ORM\ManyToOne]
-    #[ORM\JoinColumn(name: 'farmacia_id',nullable: false)]
+    #[ORM\JoinColumn(name: 'farmacia_id', nullable: false)]
     private Farmacia $farmacia;
     #[ORM\Column(name: 'creado', type: Types::DATE_IMMUTABLE)]
     private DateTimeImmutable $creado;
@@ -31,10 +31,10 @@ class Punto
 
     public function __construct(Cliente $cliente, Farmacia $farmacia, int $cantidad)
     {
-        $this->cliente = $cliente;
+        $this->cliente  = $cliente;
         $this->farmacia = $farmacia;
         $this->cantidad = $cantidad;
-        $this->creado = new DateTimeImmutable();
+        $this->creado   = new DateTimeImmutable();
     }
 
     public function id(): ?int
@@ -57,7 +57,7 @@ class Punto
         return $this->creado;
     }
 
-    public function cantidad() : int
+    public function cantidad(): int
     {
         return $this->cantidad;
     }
@@ -65,5 +65,20 @@ class Punto
     public function farmaciaCanjeada(): ?Farmacia
     {
         return $this->farmaciaCanjeada;
+    }
+
+    public function estaCanjeado(): bool
+    {
+        return $this->farmaciaCanjeada() !== null;
+    }
+
+    public function esCanjeable(): bool
+    {
+        return $this->cliente()->tarjeta()->saldo() > $this->cantidad() && !$this->estaCanjeado();
+    }
+
+    public function canjeando(Farmacia $farmacia): void
+    {
+        $this->farmaciaCanjeada = $farmacia;
     }
 }

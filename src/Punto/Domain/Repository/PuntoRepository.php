@@ -10,5 +10,7 @@ interface PuntoRepository
 {
     public function findById(int $puntoId): ?Punto;
 
+    public function findByIdByClienteSinCajear(Cliente $cliente, int $puntoId): ?Punto;
+
     public function save(Punto $punto): void;
 }

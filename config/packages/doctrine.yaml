@@ -21,6 +21,30 @@ doctrine:
                 dir: '%kernel.project_dir%/src/Entity'
                 prefix: 'App\Entity'
                 alias: App
+            Farmacia:
+                type: attribute
+                is_bundle: false
+                dir: '%kernel.project_dir%/src/Farmacia/Domain/Entity'
+                prefix: 'App\Farmacia\Domain\Entity'
+                alias: Farmacia
+            Cliente:
+                type: attribute
+                is_bundle: false
+                dir: '%kernel.project_dir%/src/Cliente/Domain/Entity'
+                prefix: 'App\Cliente\Domain\Entity'
+                alias: Cliente
+            Tarjeta:
+                type: attribute
+                is_bundle: false
+                dir: '%kernel.project_dir%/src/Tarjeta/Domain/Entity'
+                prefix: 'App\Tarjeta\Domain\Entity'
+                alias: Tarjeta
+            Punto:
+                type: attribute
+                is_bundle: false
+                dir: '%kernel.project_dir%/src/Punto/Domain/Entity'
+                prefix: 'App\Punto\Domain\Entity'
+                alias: Punto
 
 when@test:
     doctrine:

@@ -1,7 +1,9 @@
 <?php
 
-namespace App\Entity;
+namespace App\Punto\Domain\Entity;
 
+use App\Cliente\Domain\Entity\Cliente;
+use App\Farmacia\Domain\Entity\Farmacia;
 use DateTimeImmutable;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;

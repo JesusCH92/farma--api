@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Entity;
+namespace App\Cliente\Domain\Entity;
 
+use App\Tarjeta\Domain\Entity\Tarjeta;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity]

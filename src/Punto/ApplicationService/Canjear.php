@@ -12,8 +12,8 @@ use App\Farmacia\Domain\Exception\NotFoundFarmacia;
 use App\Farmacia\Domain\Repository\FarmaciaRepository;
 use App\Punto\ApplicationService\DTO\CanjearRequest;
 use App\Punto\Domain\Entity\Puntos;
+use App\Punto\Domain\Exception\NotFoundPunto;
 use App\Punto\Domain\Repository\PuntoRepository;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 final class Canjear
 {
@@ -63,7 +63,7 @@ final class Canjear
         );
 
         if (in_array(null, $puntoCollection, true)) {
-            throw new NotFoundHttpException('Los puntos no son validos');
+            throw new NotFoundPunto('Los puntos no son validos');
         }
 
         return new Puntos($puntoCollection);

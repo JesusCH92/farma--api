@@ -10,7 +10,7 @@ use App\Punto\Domain\Repository\PuntoRepository;
 
 class SpyPuntoRepository implements PuntoRepository
 {
-    private $validateWasCalled = false;
+    private bool $validateWasCalled = false;
 
     public function findByIdByClienteSinCajear(Cliente $cliente, int $puntoId): ?Punto
     {

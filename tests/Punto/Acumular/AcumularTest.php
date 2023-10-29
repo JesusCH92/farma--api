@@ -9,7 +9,6 @@ use App\Punto\ApplicationService\DTO\AcumularRequest;
 use App\Tests\Punto\DummyClienteRepository;
 use App\Tests\Punto\DummyFarmaciaRepository;
 use App\Tests\Punto\DummyPuntoRepository;
-use App\Tests\Punto\SpyPuntoRepository;
 use App\Tests\Punto\StubClienteRepository;
 use App\Tests\Punto\StubFarmaciaRepository;
 use PHPUnit\Framework\TestCase;

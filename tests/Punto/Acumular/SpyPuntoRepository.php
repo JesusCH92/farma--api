@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Tests\Punto;
+namespace App\Tests\Punto\Acumular;
 
 use App\Cliente\Domain\Entity\Cliente;
 use App\Farmacia\Domain\Entity\Farmacia;

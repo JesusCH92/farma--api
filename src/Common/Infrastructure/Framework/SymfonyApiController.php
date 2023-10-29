@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Common\Infrastructure\Framework;
 
 use App\Common\Domain\Constant\Date;
+use App\Common\Domain\DateTime;
 use DateTimeImmutable;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -12,6 +13,8 @@ use Symfony\Component\HttpFoundation\Response;
 
 abstract class SymfonyApiController extends AbstractController
 {
+    use DateTime;
+
     final protected function response(array $data, ?int $statusResponse = null): JsonResponse
     {
         $statusResponse = $statusResponse ?? Response::HTTP_OK;

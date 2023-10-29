@@ -10,6 +10,7 @@ use App\Farmacia\ApplicationService\DTO\ContadorPuntoNoCanjeadoRequest;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use OpenApi\Annotations as OA;
 
 #[Route('/api')]
 final class ContadorPuntoNoCanjeadoController extends SymfonyApiController
@@ -19,6 +20,31 @@ final class ContadorPuntoNoCanjeadoController extends SymfonyApiController
     }
 
     #[Route('/puntos-sin-canjear', name: 'app_contador_punto_no_canjeado', methods: 'GET')]
+    /**
+     * @OA\Response(
+     *     response=Response::HTTP_OK,
+     *     description="Mostramos la cantidad(float) de los puntos no canjeados en una farmacia durante un periodo de tiempo"
+     * )
+     * @OA\Parameter(
+     *      name="farmacia_id",
+     *      in="path",
+     *      description="ID de la farmacia",
+     *      @OA\Schema(type="int")
+     *  )
+     * @OA\Parameter(
+     *        name="fecha_inicio",
+     *        in="path",
+     *        description="la fecha debe tener el formato año mes dia, como por ejemplo: '2023-05-09'",
+     *        @OA\Schema(type="string")
+     *    )
+     * @OA\Parameter(
+     *         name="fecha_fin",
+     *         in="path",
+     *         description="la fecha debe tener el formato año mes dia, como por ejemplo: '2023-05-31'",
+     *         @OA\Schema(type="string")
+     *     )
+     * @OA\Tag(name="Puntos otorgados y sin canjear en una farmacia durante un periodo")
+     */
     public function contadorDePuntosNoCanjeadosEnFarmacia(Request $request): Response
     {
         $response = ($this->contadorPuntoNoCanjeado)(
@@ -34,6 +60,37 @@ final class ContadorPuntoNoCanjeadoController extends SymfonyApiController
     }
 
     #[Route('/client-puntos-sin-canjear', name: 'app_contador_punto_no_canjeado_por_cliente', methods: 'GET')]
+    /**
+     * @OA\Response(
+     *     response=Response::HTTP_OK,
+     *     description="Mostramos la cantidad(float) de los puntos no canjeados en una farmacia durante un periodo de tiempo para un cliente"
+     * )
+     * @OA\Parameter(
+     *      name="farmacia_id",
+     *      in="path",
+     *      description="ID de la farmacia",
+     *      @OA\Schema(type="int")
+     *  )
+     * @OA\Parameter(
+     *        name="fecha_inicio",
+     *        in="path",
+     *        description="la fecha debe tener el formato año mes dia, como por ejemplo: '2023-05-09'",
+     *        @OA\Schema(type="string")
+     *  )
+     * @OA\Parameter(
+     *         name="fecha_fin",
+     *         in="path",
+     *         description="la fecha debe tener el formato año mes dia, como por ejemplo: '2023-05-31'",
+     *         @OA\Schema(type="string")
+     *  )
+     * @OA\Parameter(
+     *       name="cliente_id",
+     *       in="path",
+     *       description="ID del cliente",
+     *       @OA\Schema(type="int")
+     *   )
+     * @OA\Tag(name="Puntos otorgados y sin canjear en una farmacia durante un periodo a un cliente")
+     */
     public function contadorDePuntosNoCanjeadosEnFarmaciaPorCliente(Request $request): Response
     {
         $response = ($this->contadorPuntoNoCanjeado)(

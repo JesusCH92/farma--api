@@ -7,11 +7,10 @@ use App\Farmacia\Domain\Entity\Farmacia;
 use App\Punto\Domain\Entity\Punto;
 use App\Punto\Domain\Entity\Puntos;
 use App\Punto\Domain\Repository\PuntoRepository;
+use App\Tests\Common\Spy;
 
-class SpyPuntoRepository implements PuntoRepository
+class SpyPuntoRepository extends Spy implements PuntoRepository
 {
-    private bool $validateWasCalled = false;
-
     public function findByIdByClienteSinCajear(Cliente $cliente, int $puntoId): ?Punto
     {
         return null;
@@ -30,10 +29,5 @@ class SpyPuntoRepository implements PuntoRepository
         $this->validateWasCalled = true;
 
         return new Puntos([]);
-    }
-
-    public function verify(): bool
-    {
-        return $this->validateWasCalled;
     }
 }

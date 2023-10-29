@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Tests\Punto\Acumular;
+namespace App\Tests\Punto;
 
 use App\Farmacia\ApplicationService\DTO\ContadorPuntoNoCanjeadoRequest;
 use App\Farmacia\Domain\Entity\Farmacia;

@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
+#[Route('/api')]
 final class PuntoDelClienteSinCanjearController extends SymfonyApiController
 {
     public function __construct(private readonly PuntosNoCanjeadosPorCliente $puntosNoCanjeadosPorCliente)

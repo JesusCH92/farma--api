@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+#[Route('/api')]
 final class AcumuladorPuntoController extends SymfonyApiController
 {
     public function __construct(private readonly Acumular $acumular)

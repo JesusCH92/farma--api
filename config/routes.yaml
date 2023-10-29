@@ -6,27 +6,27 @@ controllers:
 
 # PUNTO
 app_acumulador_punto:
-    path: /acumulador-punto
+    path: /api/acumulador-punto
     controller: App\Punto\Infrastructure\Api\AcumuladorPuntoController::acumuladorDePuntos
     methods: [POST]
 
 app_canjeador_punto:
-    path: /canjeador-punto
+    path: /api/canjeador-punto
     controller: App\Punto\Infrastructure\Api\CanjeadorPuntoController::canjeadorDePuntos
     methods: [POST]
 
 app_punto_no_canjeado_por_cliente:
-    path: /cliente-puntos-disponibles
+    path: /api/cliente-puntos-disponibles
     controller: App\Punto\Infrastructure\Api\PuntoDelClienteSinCanjearController::puntosNoCanjeadosDelCliente
     methods: [GET]
 
 # FARMACIA
 app_contador_punto_no_canjeado:
-    path: /puntos-sin-canjear
+    path: /api/puntos-sin-canjear
     controller: App\Farmacia\Infrastructure\Api\ContadorPuntoNoCanjeadoController::contadorDePuntosNoCanjeadosEnFarmacia
     methods: [GET]
 
 app_contador_punto_no_canjeado_por_cliente:
-    path: /client-puntos-sin-canjear
+    path: /api/client-puntos-sin-canjear
     controller: App\Farmacia\Infrastructure\Api\ContadorPuntoNoCanjeadoController::contadorDePuntosNoCanjeadosEnFarmaciaPorCliente
     methods: [GET]

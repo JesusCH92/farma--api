@@ -13,7 +13,7 @@ RUN echo "alias sf=/app/bin/console" >> /home/appuser/.bashrc
 COPY ./php.ini /usr/local/etc/php/php.ini
 
 RUN apt-get update \
-    && apt-get install -y git acl openssl openssh-client wget zip vim libssh-dev \
+    && apt-get install -y git acl openssl openssh-client wget zip libssh-dev \
     && apt-get install -y libpng-dev zlib1g-dev libzip-dev libxml2-dev libicu-dev \
     && docker-php-ext-install intl pdo pdo_mysql zip gd soap bcmath sockets \
     && pecl install xdebug \

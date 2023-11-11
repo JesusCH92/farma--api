@@ -22,29 +22,43 @@ final class AcumuladorPuntoController extends SymfonyApiController
 
     #[Route('/acumulador-punto', name: 'app_acumulador_punto', methods: 'POST')]
     /**
-     * @OA\Response(
-     *     response=Response::HTTP_CREATED,
-     *     description="Los puntos se acumularon con éxito."
-     * )
-     * @OA\Parameter(
-     *     name="farmacia_id",
-     *     in="header",
-     *     description="ID de la farmacia",
-     *     @OA\Schema(type="int")
-     * )
-     * @OA\Parameter(
-     *      name="cliente_id",
-     *      in="header",
-     *      description="ID del cliente",
-     *      @OA\Schema(type="int")
-     *  )
-     * @OA\Parameter(
-     *       name="puntos",
-     *       in="header",
-     *       description="cantidad de puntos a acumular",
-     *       @OA\Schema(type="int")
-     *   )
-     * @OA\Tag(name="Acumulador de puntos")
+     * @OA\Post(
+     *     path="/api/acumulador-punto",
+     *     summary="Acumula puntos para un cliente en una farmacia.",
+     *     @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="multipart/form-data",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                     property="farmacia_id",
+     *                     type="integer",
+     *                     example="1"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="cliente_id",
+     *                     type="integer",
+     *                     example="1"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="puntos",
+     *                     type="integer",
+     *                     example="50"
+     *                 ),
+     *             ),
+     *         ),
+     *     ),
+     *     @OA\Response(
+     *         response=201,
+     *         description="Operación exitosa.",
+     *         @OA\JsonContent()
+     *     ),
+     *     @OA\Response(
+     *         response=400,
+     *         description="Parámetros incorrectos.",
+     *         @OA\JsonContent()
+     *     )
+     * ),
+     * @OA\Tag(name="Acumulador de Puntos")
      */
     public function acumuladorDePuntos(Request $request): JsonResponse
     {

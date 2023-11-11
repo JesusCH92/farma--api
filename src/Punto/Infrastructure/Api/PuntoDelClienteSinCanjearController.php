@@ -22,15 +22,29 @@ final class PuntoDelClienteSinCanjearController extends SymfonyApiController
 
     #[Route('/cliente-puntos-disponibles', name: 'app_punto_no_canjeado_por_cliente', methods: 'GET')]
     /**
-     * @OA\Response(
-     *     response=Response::HTTP_OK,
-     *     description="Mostramos la cantidad(float) de los puntos no canjeados de un cliente en particular"
-     * )
-     * @OA\Parameter(
-     *      name="cliente_id",
-     *      in="path",
-     *      description="ID del cliente",
-     *      @OA\Schema(type="int")
+     * @OA\Get(
+     *      path="/api/cliente-puntos-disponibles",
+     *      summary="Obtiene la cantidad de puntos no canjeados por un cliente.",
+     *      @OA\Parameter(
+     *          name="cliente_id",
+     *          in="query",
+     *          required=true,
+     *          @OA\Schema(type="integer"),
+     *          example=1,
+     *          description="ID del cliente."
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Operación exitosa.",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="puntos", type="integer", example=50)
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=400,
+     *          description="Parámetros incorrectos.",
+     *          @OA\JsonContent()
+     *      )
      *  )
      * @OA\Tag(name="Cantidad de puntos sin canjear del cliente")
      */

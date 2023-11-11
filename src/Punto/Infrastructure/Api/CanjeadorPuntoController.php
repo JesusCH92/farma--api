@@ -9,7 +9,6 @@ use App\Punto\ApplicationService\Canjear;
 use App\Punto\ApplicationService\DTO\CanjearRequest;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use OpenApi\Annotations as OA;
 
@@ -22,29 +21,43 @@ final class CanjeadorPuntoController extends SymfonyApiController
 
     #[Route('/canjeador-punto', name: 'app_canjeador_punto', methods: 'POST')]
     /**
-     * @OA\Response(
-     *     response=Response::HTTP_OK,
-     *     description="Canjeador de puntos"
-     * )
-     * @OA\Parameter(
-     *     name="farmacia_id",
-     *     in="header",
-     *     description="ID de la farmacia",
-     *     @OA\Schema(type="int")
-     * )
-     * @OA\Parameter(
-     *      name="cliente_id",
-     *      in="header",
-     *      description="ID del cliente",
-     *      @OA\Schema(type="int")
-     *  )
-     * @OA\Parameter(
-     *       name="punto_collection",
-     *       in="header",
-     *       description="la colección de puntos debe venir en la siguiente forma: '1,2,3,4'",
-     *       @OA\Schema(type="string")
-     *   )
-     * @OA\Tag(name="Canjeador de puntos")
+     * @OA\Post(
+     *     path="/api/canjeador-punto",
+     *     summary="Canjea puntos para un cliente en una farmacia.",
+     *     @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="multipart/form-data",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                     property="farmacia_id",
+     *                     type="integer",
+     *                     example="2"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="cliente_id",
+     *                     type="integer",
+     *                     example="1"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="punto_collection",
+     *                     type="string",
+     *                     example="1,2,3"
+     *                 ),
+     *             ),
+     *         ),
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Operación exitosa.",
+     *         @OA\JsonContent()
+     *     ),
+     *     @OA\Response(
+     *         response=400,
+     *         description="Parámetros incorrectos.",
+     *         @OA\JsonContent()
+     *     )
+     * ),
+     * @OA\Tag(name="Canjeador de Puntos")
      */
     public function canjeadorDePuntos(Request $request): JsonResponse
     {
